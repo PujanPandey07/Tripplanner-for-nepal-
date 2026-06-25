@@ -1,0 +1,32 @@
+# Environment variables / secrets -- CRITICAL, contains your Gemini API key
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+
+# LangGraph checkpoint database -- contains real conversation content,
+# and is a runtime-generated file, not source code
+checkpoints.db
+
+# Django
+db.sqlite3
+*.sqlite3
+/staticfiles/
+/media/
+
+# Django secret key / local settings, if you ever split them out
+local_settings.py
+
+# IDE/editor clutter
+.vscode/
+.idea/
+*.swp
+
+# OS clutter
+.DS_Store
+Thumbs.db

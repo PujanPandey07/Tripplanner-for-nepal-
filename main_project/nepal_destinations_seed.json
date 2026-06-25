@@ -1,0 +1,269 @@
+{
+  "destinations": [
+    {
+      "name": "Pokhara",
+      "region": "Western",
+      "days_recommended": "2-3",
+      "best_season": "Oct-Apr",
+      "accommodation": {
+        "budget": { "min_npr": 800, "max_npr": 2000, "description": "Lakeside guesthouses, shared/basic private bath; quieter northern Lakeside is cheaper than the central strip" },
+        "mid_range": { "min_npr": 2000, "max_npr": 6000, "description": "3-star hotels near Lakeside, private bath, AC, some lake/mountain view rooms" },
+        "luxury": { "min_npr": 8000, "max_npr": 30000, "description": "Lakeside resorts and heritage properties, pools/spas, premium mountain views" }
+      },
+      "food_per_day_npr": { "min": 500, "max": 1500 },
+      "local_transport_per_day_npr": { "min": 200, "max": 800 },
+      "activities": [
+        { "name": "Phewa Lake boating", "cost_min_npr": 450, "cost_max_npr": 600, "notes": "per hour, cheaper if you paddle yourself" },
+        { "name": "Sarangkot sunrise (taxi/tour)", "cost_min_npr": 600, "cost_max_npr": 2000 },
+        { "name": "Paragliding (tandem)", "cost_min_npr": 9000, "cost_max_npr": 13000, "notes": "walk-in office prices are often cheaper than hotel/agency booking" },
+        { "name": "Davis Falls + Gupteshwor Cave", "cost_min_npr": 200, "cost_max_npr": 200 },
+        { "name": "World Peace Pagoda (taxi + entry)", "cost_min_npr": 600, "cost_max_npr": 600 },
+        { "name": "Zipline (Zipflyer)", "cost_min_npr": 4000, "cost_max_npr": 6000 },
+        { "name": "Ultralight flight", "cost_min_npr": 13000, "cost_max_npr": 20000 }
+      ],
+      "nearby_extensions": [
+        { "name": "Sarangkot", "distance_km": 5, "extra_days": 0, "notes": "Half-day add-on, sunrise viewpoint over Annapurna/Dhaulagiri/Machhapuchhre ranges, also a paragliding launch point", "extra_cost_min_npr": 600, "extra_cost_max_npr": 2000 },
+        { "name": "Begnas Lake (+ Rupa Lake)", "distance_km": 13, "extra_days": 1, "notes": "Quieter, less touristy lake than Phewa, good for a day trip or overnight escape; full hike around both lakes takes 6-8 hours", "extra_cost_min_npr": 1500, "extra_cost_max_npr": 6000 },
+        { "name": "Jomsom / Mustang", "distance_km": null, "extra_days": 2, "notes": "STOL flight (NPR 6,000-8,000) or 8+ hour road journey; arid high-altitude landscape, very different from Pokhara", "extra_cost_min_npr": 8000, "extra_cost_max_npr": 20000 },
+        { "name": "Pokhara-Kathmandu (return leg option)", "distance_km": 200, "extra_days": 0, "notes": "Domestic flight saves ~6 hours vs tourist bus, but costs roughly 5-8x more", "extra_cost_min_npr": 7000, "extra_cost_max_npr": 12000 }
+      ],
+      "accessible_treks": ["Ghorepani Poon Hill Trek", "Ghandruk Village Trek", "Mardi Himal Trek", "Annapurna Base Camp Trek", "Annapurna Circuit Trek"]
+    },
+    {
+      "name": "Kathmandu",
+      "region": "Central",
+      "days_recommended": "2-3",
+      "best_season": "Oct-Apr",
+      "accommodation": {
+        "budget": { "min_npr": 600, "max_npr": 1500, "description": "Thamel hostels/dorms, basic guesthouses" },
+        "mid_range": { "min_npr": 2000, "max_npr": 5000, "description": "3-star hotels in Thamel, Patan, or Bhaktapur (often 20-30% cheaper than Thamel for similar quality)" },
+        "luxury": { "min_npr": 10000, "max_npr": 30000, "description": "Heritage hotels (e.g. Dwarika's-style), international chains" }
+      },
+      "food_per_day_npr": { "min": 600, "max": 1500 },
+      "local_transport_per_day_npr": { "min": 300, "max": 700 },
+      "activities": [
+        { "name": "Pashupatinath Temple", "cost_min_npr": 1000, "cost_max_npr": 1000 },
+        { "name": "Boudhanath Stupa", "cost_min_npr": 400, "cost_max_npr": 400 },
+        { "name": "Swayambhunath (Monkey Temple)", "cost_min_npr": 200, "cost_max_npr": 200 },
+        { "name": "Kathmandu Durbar Square pass", "cost_min_npr": 1000, "cost_max_npr": 1500 },
+        { "name": "Bhaktapur Durbar Square", "cost_min_npr": 1500, "cost_max_npr": 1500 }
+      ],
+      "nearby_extensions": [
+        { "name": "Nagarkot", "distance_km": 32, "extra_days": 1, "notes": "Easiest short hill-station trip from Kathmandu valley, sunrise views", "extra_cost_min_npr": 2500, "extra_cost_max_npr": 6000 },
+        { "name": "Dhulikhel", "distance_km": 30, "extra_days": 1, "notes": "Similar hill-view day trip to Nagarkot, slightly quieter", "extra_cost_min_npr": 2000, "extra_cost_max_npr": 5000 },
+        { "name": "Bhaktapur / Patan", "distance_km": 13, "extra_days": 0, "notes": "Heritage day trip, can combine both in one day", "extra_cost_min_npr": 1500, "extra_cost_max_npr": 3000 }
+      ],
+      "accessible_treks": ["Langtang Valley Trek", "Gosaikunda Trek", "Everest Base Camp Trek"]
+    },
+    {
+      "name": "Chitwan",
+      "region": "Terai",
+      "days_recommended": "2-3",
+      "best_season": "Oct-Mar",
+      "accommodation": {
+        "budget": { "min_npr": 1000, "max_npr": 2500, "description": "Basic jungle lodges near Sauraha, often quote walk-in 20-30% below online rates" },
+        "mid_range": { "min_npr": 3000, "max_npr": 8000, "description": "Standard resorts with full-board meal packages" },
+        "luxury": { "min_npr": 12000, "max_npr": 25000, "description": "Premium jungle resorts with private safari packages" }
+      },
+      "food_per_day_npr": { "min": 700, "max": 1200 },
+      "local_transport_per_day_npr": { "min": 300, "max": 700 },
+      "activities": [
+        { "name": "Jeep jungle safari (shared)", "cost_min_npr": 3000, "cost_max_npr": 5000, "notes": "Private jeep booking costs roughly 5x more (~NPR 15,000)" },
+        { "name": "Canoe ride", "cost_min_npr": 1000, "cost_max_npr": 2000 },
+        { "name": "Tharu cultural show", "cost_min_npr": 500, "cost_max_npr": 800 },
+        { "name": "Jungle walk with guide", "cost_min_npr": 1500, "cost_max_npr": 3000 }
+      ],
+      "nearby_extensions": [
+        { "name": "Bardia National Park", "distance_km": null, "extra_days": 2, "notes": "Remote, far fewer tourists, better odds of tiger sightings; significantly more travel time than Chitwan", "extra_cost_min_npr": 8000, "extra_cost_max_npr": 25000 }
+      ],
+      "accessible_treks": []
+    },
+    {
+      "name": "Lumbini",
+      "region": "Terai",
+      "days_recommended": "1-2",
+      "best_season": "Oct-Mar",
+      "accommodation": {
+        "budget": { "min_npr": 800, "max_npr": 2000, "description": "Simple guesthouses near the monastic zone" },
+        "mid_range": { "min_npr": 2500, "max_npr": 5000, "description": "Standard hotels with AC and restaurant" },
+        "luxury": { "min_npr": 8000, "max_npr": 18000, "description": "Resort-style properties, fewer options than Pokhara/Kathmandu" }
+      },
+      "food_per_day_npr": { "min": 500, "max": 900 },
+      "local_transport_per_day_npr": { "min": 200, "max": 500 },
+      "activities": [
+        { "name": "Maya Devi Temple", "cost_min_npr": 200, "cost_max_npr": 200 },
+        { "name": "Monastic Zone walking/cycling tour", "cost_min_npr": 0, "cost_max_npr": 500, "notes": "Bicycle rental is the most popular and cheapest way to see the monastery complexes" }
+      ],
+      "nearby_extensions": [],
+      "accessible_treks": []
+    },
+    {
+      "name": "Nagarkot",
+      "region": "Central (hill, 32km from Kathmandu)",
+      "days_recommended": "1",
+      "best_season": "Oct-Apr",
+      "accommodation": {
+        "budget": { "min_npr": 500, "max_npr": 1500, "description": "Basic guesthouses, some homestay-style options" },
+        "mid_range": { "min_npr": 2000, "max_npr": 5000, "description": "View hotels facing the Himalayan range" },
+        "luxury": { "min_npr": 7000, "max_npr": 15000, "description": "Resort properties with panoramic sunrise-facing rooms" }
+      },
+      "food_per_day_npr": { "min": 500, "max": 800 },
+      "local_transport_per_day_npr": { "min": 200, "max": 500 },
+      "activities": [
+        { "name": "Sunrise viewpoint tower", "cost_min_npr": 0, "cost_max_npr": 200 },
+        { "name": "Short hikes to nearby villages", "cost_min_npr": 0, "cost_max_npr": 500 }
+      ],
+      "nearby_extensions": [
+        { "name": "Bhaktapur (en route back to Kathmandu)", "distance_km": 20, "extra_days": 0, "notes": "Easy to combine on the return drive", "extra_cost_min_npr": 1500, "extra_cost_max_npr": 1500 }
+      ],
+      "accessible_treks": []
+    },
+    {
+      "name": "Bandipur",
+      "region": "Western (hill town)",
+      "days_recommended": "1-2",
+      "best_season": "Oct-Apr",
+      "accommodation": {
+        "budget": { "min_npr": 500, "max_npr": 1500, "description": "Homestays in the heritage village, often includes dinner and breakfast" },
+        "mid_range": { "min_npr": 2000, "max_npr": 4500, "description": "Boutique guesthouses in restored Newari-style buildings" },
+        "luxury": { "min_npr": 6000, "max_npr": 12000, "description": "Limited options, mostly boutique heritage properties" }
+      },
+      "food_per_day_npr": { "min": 500, "max": 700 },
+      "local_transport_per_day_npr": { "min": 100, "max": 300, "notes": "Largely walkable heritage village" },
+      "activities": [
+        { "name": "Heritage village walk", "cost_min_npr": 0, "cost_max_npr": 0 },
+        { "name": "Thar Khola gorge / Siddha Cave", "cost_min_npr": 100, "cost_max_npr": 300 }
+      ],
+      "nearby_extensions": [],
+      "accessible_treks": []
+    }
+  ],
+
+  "trekking_destinations": [
+    {
+      "name": "Ghorepani Poon Hill Trek",
+      "region": "Annapurna (Western)",
+      "starting_point": "Pokhara (Nayapul)",
+      "duration_days": "4-5",
+      "difficulty": "Easy-Moderate",
+      "max_altitude_m": 3210,
+      "best_season": "Oct-Nov, Mar-Apr",
+      "permits": [
+        { "name": "Annapurna Conservation Area Permit (ACAP)", "cost_npr": 3000 }
+      ],
+      "guide_required": true,
+      "cost_band_npr": { "budget_min": 25000, "budget_max": 45000, "luxury_min": 70000, "luxury_max": 120000 },
+      "notes": "Most beginner-friendly Himalayan trek; budget = shared group teahouse trek with guide; luxury = private guide, lodge upgrades, less walking via partial transport"
+    },
+    {
+      "name": "Ghandruk Village Trek",
+      "region": "Annapurna (Western)",
+      "starting_point": "Pokhara (Kimche/Nayapul)",
+      "duration_days": "2-4",
+      "difficulty": "Easy",
+      "max_altitude_m": 1940,
+      "best_season": "Oct-Apr",
+      "permits": [
+        { "name": "Annapurna Conservation Area Permit (ACAP)", "cost_npr": 3000 }
+      ],
+      "guide_required": false,
+      "cost_band_npr": { "budget_min": 8000, "budget_max": 18000, "luxury_min": 25000, "luxury_max": 45000 },
+      "notes": "Short, low-altitude Gurung village trek, often combined with Poon Hill; good option if short on time or trekking with kids/elderly"
+    },
+    {
+      "name": "Mardi Himal Trek",
+      "region": "Annapurna (Western)",
+      "starting_point": "Pokhara (Kande)",
+      "duration_days": "5-6",
+      "difficulty": "Moderate",
+      "max_altitude_m": 4500,
+      "best_season": "Oct-Nov, Mar-Apr",
+      "permits": [
+        { "name": "Annapurna Conservation Area Permit (ACAP)", "cost_npr": 3000 }
+      ],
+      "guide_required": true,
+      "cost_band_npr": { "budget_min": 35000, "budget_max": 55000, "luxury_min": 80000, "luxury_max": 130000 },
+      "notes": "Less crowded alternative to Poon Hill/ABC with similar close-up mountain views"
+    },
+    {
+      "name": "Annapurna Base Camp Trek",
+      "region": "Annapurna (Western)",
+      "starting_point": "Pokhara (Nayapul)",
+      "duration_days": "7-11",
+      "difficulty": "Moderate-Hard",
+      "max_altitude_m": 4130,
+      "best_season": "Oct-Nov, Mar-Apr",
+      "permits": [
+        { "name": "Annapurna Conservation Area Permit (ACAP)", "cost_npr": 3000 }
+      ],
+      "guide_required": true,
+      "cost_band_npr": { "budget_min": 65000, "budget_max": 95000, "luxury_min": 150000, "luxury_max": 270000 },
+      "notes": "Luxury tier often includes a helicopter return from base camp instead of trekking back down"
+    },
+    {
+      "name": "Annapurna Circuit Trek",
+      "region": "Annapurna (Western)",
+      "starting_point": "Besisahar (bus from Kathmandu/Pokhara)",
+      "duration_days": "12-18",
+      "difficulty": "Hard",
+      "max_altitude_m": 5416,
+      "best_season": "Oct-Nov, Mar-Apr",
+      "permits": [
+        { "name": "Annapurna Conservation Area Permit (ACAP)", "cost_npr": 3000 },
+        { "name": "TIMS Card", "cost_npr": 2000 }
+      ],
+      "guide_required": true,
+      "cost_band_npr": { "budget_min": 90000, "budget_max": 140000, "luxury_min": 200000, "luxury_max": 400000 },
+      "notes": "Crosses Thorong La pass (5,416m), the highest point on a standard trekking route in Nepal; one of the longer classic circuits"
+    },
+    {
+      "name": "Langtang Valley Trek",
+      "region": "Langtang (Central, closest major trek region to Kathmandu)",
+      "starting_point": "Syabrubesi (drive from Kathmandu)",
+      "duration_days": "7-10",
+      "difficulty": "Moderate",
+      "max_altitude_m": 4984,
+      "best_season": "Oct-Nov, Mar-Apr",
+      "permits": [
+        { "name": "Langtang National Park Entry Permit", "cost_npr": 3000 },
+        { "name": "TIMS Card", "cost_npr": 2000 }
+      ],
+      "guide_required": true,
+      "cost_band_npr": { "budget_min": 45000, "budget_max": 65000, "luxury_min": 90000, "luxury_max": 150000 },
+      "notes": "Often underrated relative to Everest/Annapurna for cost-to-views ratio, since it's the closest major trekking region to Kathmandu"
+    },
+    {
+      "name": "Gosaikunda Trek",
+      "region": "Langtang (Central)",
+      "starting_point": "Dhunche (5-7 hour drive from Kathmandu)",
+      "duration_days": "5-7",
+      "difficulty": "Moderate",
+      "max_altitude_m": 4380,
+      "best_season": "Sep-Nov, Mar-May",
+      "permits": [
+        { "name": "Langtang National Park Entry Permit", "cost_npr": 3000 },
+        { "name": "TIMS Card", "cost_npr": 2000 }
+      ],
+      "guide_required": true,
+      "cost_band_npr": { "budget_min": 20000, "budget_max": 40000, "luxury_min": 60000, "luxury_max": 130000 },
+      "notes": "One of the most accessible and affordable high-altitude treks from Kathmandu; sacred alpine lake, major Hindu pilgrimage site during Janai Purnima (August); luxury tier reflects combining with the Langtang Valley extension"
+    },
+    {
+      "name": "Everest Base Camp (EBC) Trek",
+      "region": "Khumbu / Everest (Eastern)",
+      "starting_point": "Lukla (flight from Kathmandu or Ramechhap)",
+      "duration_days": "12-16",
+      "difficulty": "Hard",
+      "max_altitude_m": 5364,
+      "best_season": "Oct-Nov, Mar-Apr",
+      "permits": [
+        { "name": "Sagarmatha National Park Entry Permit", "cost_npr": 3000 },
+        { "name": "Khumbu Pasang Lhamu Rural Municipality Permit", "cost_npr": 2000 }
+      ],
+      "guide_required": true,
+      "transport_note": "Kathmandu-Lukla round-trip flight is a separate major cost, roughly NPR 47,000-60,000, on top of the trek package itself",
+      "cost_band_npr": { "budget_min": 130000, "budget_max": 190000, "luxury_min": 270000, "luxury_max": 600000 },
+      "notes": "Budget = independent/local-agency guided package, shared rooms; luxury = premium lodges, private guide, small groups, optional helicopter return from Gorak Shep (can push total well past NPR 600,000); flight delays during peak season are common, so building 1-2 buffer days is recommended"
+    }
+  ]
+}
