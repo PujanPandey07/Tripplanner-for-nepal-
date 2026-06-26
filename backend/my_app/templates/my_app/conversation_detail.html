@@ -1,0 +1,34 @@
+{% extends "my_app/base.html" %}
+{% block title %}{{ conversation.title|default:"New chat" }}{% endblock %}
+
+{% block main %}
+    <div class="main-header">{{ conversation.title|default:"New chat" }}</div>
+
+    <div class="main-content">
+        <div class="content-inner">
+            <div class="message-list">
+                {% for msg in messages %}
+                    <div class="message {{ msg.role }}">
+                        <div class="avatar">{% if msg.role == "user" %}U{% else %}AI{% endif %}</div>
+                        <div class="bubble">{{ msg.content }}</div>
+                    </div>
+                {% empty %}
+                    <div class="empty-state">
+                        Ask about a destination, a trek, or get a budget estimate for your Nepal trip.
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="input-wrapper">
+        <form method="post" class="chat-form">
+            {% csrf_token %}
+            {{ form.message }}
+            <button type="submit">&uarr;</button>
+        </form>
+        {% if form.message.errors %}
+            <ul class="errorlist">{{ form.message.errors }}</ul>
+        {% endif %}
+    </div>
+{% endblock %}

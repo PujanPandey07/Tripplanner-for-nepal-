@@ -1,0 +1,17 @@
+{% extends "my_app/base.html" %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="auth-box">
+    <h2>Welcome back</h2>
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            {{ field }}
+            {% if field.errors %}<ul class="errorlist">{{ field.errors }}</ul>{% endif %}
+        {% endfor %}
+        <button type="submit">Log In</button>
+    </form>
+    <p>Don't have an account? <a href="{% url 'signup' %}">Sign up</a></p>
+</div>
+{% endblock %}

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Nepal Trip Planner{% endblock %}</title>
+    <style>
+        :root {
+            --bg-sidebar: #1e1e1e;
+            --bg-main: #2b2b2b;
+            --bg-bubble-user: #3a3a3a;
+            --bg-bubble-assistant: transparent;
+            --text-primary: #e8e8e8;
+            --text-muted: #9a9a9a;
+            --accent: #10a37f;
+            --border: #3d3d3d;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg-main);
+            color: var(--text-primary);
+            height: 100vh;
+            overflow: hidden;
+        }
+        .app-shell { display: flex; height: 100vh; }
+
+        /* ---------- Sidebar ---------- */
+        .sidebar {
+            width: 260px;
+            background: var(--bg-sidebar);
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            border-right: 1px solid var(--border);
+        }
+        .sidebar-header { padding: 14px; }
+        .new-chat-btn {
+            display: flex; align-items: center; gap: 8px;
+            width: 100%; padding: 10px 12px;
+            background: transparent; border: 1px solid var(--border);
+            border-radius: 8px; color: var(--text-primary);
+            text-decoration: none; font-size: 14px; cursor: pointer;
+        }
+        .new-chat-btn:hover { background: var(--bg-bubble-user); }
+        .sidebar-list { flex: 1; overflow-y: auto; padding: 0 8px; }
+        .sidebar-item {
+            display: block; padding: 10px 12px; margin-bottom: 2px;
+            border-radius: 8px; color: var(--text-primary);
+            text-decoration: none; font-size: 14px;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .sidebar-item:hover { background: var(--bg-bubble-user); }
+        .sidebar-item.active { background: var(--bg-bubble-user); }
+        .sidebar-footer {
+            padding: 14px; border-top: 1px solid var(--border);
+            font-size: 13px; color: var(--text-muted);
+        }
+        .sidebar-footer a { color: var(--text-muted); text-decoration: underline; }
+
+        /* ---------- Main pane ---------- */
+        .main-pane { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+        .main-header {
+            padding: 14px 24px; border-bottom: 1px solid var(--border);
+            font-size: 15px; color: var(--text-muted);
+        }
+        .main-content {
+            flex: 1; overflow-y: auto; padding: 24px;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .content-inner { width: 100%; max-width: 700px; }
+
+        /* ---------- Auth pages (signup/login) ---------- */
+        .auth-page { display: flex; align-items: center; justify-content: center; height: 100vh; width: 100%; }
+        .auth-box { width: 360px; padding: 32px; background: var(--bg-sidebar); border-radius: 12px; }
+        .auth-box h2 { margin-top: 0; }
+        .auth-box input {
+            width: 100%; padding: 10px; margin-bottom: 10px;
+            border-radius: 6px; border: 1px solid var(--border);
+            background: var(--bg-main); color: var(--text-primary);
+        }
+        .auth-box button {
+            width: 100%; padding: 10px; border-radius: 6px; border: none;
+            background: var(--accent); color: white; font-size: 14px; cursor: pointer;
+        }
+        .auth-box p { font-size: 13px; color: var(--text-muted); }
+        .auth-box a { color: var(--accent); }
+        .errorlist { color: #ff6b6b; font-size: 13px; list-style: none; padding: 0; }
+
+        /* ---------- Messages ---------- */
+        .message-list { display: flex; flex-direction: column; gap: 24px; margin-bottom: 24px; }
+        .message { display: flex; gap: 12px; }
+        .message .avatar {
+            width: 28px; height: 28px; border-radius: 6px; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 12px; font-weight: 600;
+        }
+        .message.user .avatar { background: #5b6cff; }
+        .message.assistant .avatar { background: var(--accent); }
+        .message .bubble { padding-top: 4px; line-height: 1.5; white-space: pre-wrap; }
+        .empty-state { color: var(--text-muted); text-align: center; margin-top: 80px; }
+
+        /* ---------- Input bar ---------- */
+        .chat-form {
+            display: flex; gap: 8px; align-items: flex-end;
+            background: var(--bg-sidebar); border: 1px solid var(--border);
+            border-radius: 12px; padding: 8px 8px 8px 16px;
+        }
+        .chat-form textarea {
+            flex: 1; background: transparent; border: none; outline: none;
+            color: var(--text-primary); font-size: 15px; resize: none;
+            font-family: inherit; padding: 8px 0;
+        }
+        .chat-form button {
+            background: var(--accent); border: none; color: white;
+            width: 36px; height: 36px; border-radius: 8px; cursor: pointer;
+            font-size: 16px; flex-shrink: 0;
+        }
+        .input-wrapper { width: 100%; max-width: 700px; margin: 0 auto; padding: 16px 24px 20px; }
+    </style>
+</head>
+<body>
+    {% if user.is_authenticated %}
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="{% url 'new_conversation' %}" class="new-chat-btn">+ New chat</a>
+            </div>
+            <nav class="sidebar-list">
+                {% for c in sidebar_conversations %}
+                    <a href="{% url 'conversation_detail' c.id %}"
+                       class="sidebar-item {% if c.id == conversation.id %}active{% endif %}">
+                        {{ c.title|default:"New conversation" }}
+                    </a>
+                {% endfor %}
+            </nav>
+            <div class="sidebar-footer">
+                {{ user.username }} &middot; <a href="{% url 'logout' %}">Logout</a>
+            </div>
+        </aside>
+        <main class="main-pane">
+            {% block main %}{% endblock %}
+        </main>
+    </div>
+    {% else %}
+        <div class="auth-page">
+            {% block content %}{% endblock %}
+        </div>
+    {% endif %}
+</body>
+</html>

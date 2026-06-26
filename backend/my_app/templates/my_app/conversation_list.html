@@ -1,0 +1,16 @@
+{% extends "my_app/base.html" %}
+{% block title %}Nepal Trip Planner{% endblock %}
+
+{% block main %}
+    <div class="main-content" style="align-items: center; justify-content: center;">
+        <div class="content-inner" style="text-align: center;">
+            <h2>Plan your Nepal trip</h2>
+            <p style="color: var(--text-muted);">
+                Ask about destinations, treks, or get a budget estimate.
+            </p>
+            <a href="{% url 'new_conversation' %}" class="new-chat-btn" style="display: inline-flex; width: auto; padding: 10px 20px;">
+                + Start a new chat
+            </a>
+        </div>
+    </div>
+{% endblock %}

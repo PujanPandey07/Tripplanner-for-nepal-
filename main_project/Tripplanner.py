@@ -10,14 +10,14 @@ from langgraph.checkpoint.sqlite import SqliteSaver
 from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv
 
-load_dotenv()
+_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+load_dotenv(os.path.join(_SCRIPT_DIR, "..", ".env"))
 
 
 # ---------------------------------------------------------------------------
 # LOAD THE DATASET ONCE
 # ---------------------------------------------------------------------------
-_DATA_PATH = os.path.join(os.path.dirname(
-    __file__), "nepal_destinations_seed.json")
+_DATA_PATH = os.path.join(_SCRIPT_DIR, "nepal_destinations_seed.json")
 
 with open(_DATA_PATH, "r", encoding="utf-8") as f:
     nepal_data = json.load(f)
@@ -364,7 +364,7 @@ _graph_builder.add_conditional_edges(
 )
 _graph_builder.add_edge("tools", "agent")
 
-_CHECKPOINT_DB_PATH = os.path.join(os.path.dirname(__file__), "checkpoints.db")
+_CHECKPOINT_DB_PATH = os.path.join(_SCRIPT_DIR, "checkpoints.db")
 
 
 # ---------------------------------------------------------------------------
@@ -390,16 +390,23 @@ def run_agent(thread_id: str, user_message: str) -> str:
         messages.append(HumanMessage(content=user_message))
 
         result = app.invoke({"messages": messages}, config=thread_config)
-        return result["messages"][-1].content
+        return _extract_text(result["messages"][-1].content)
 
 
-# ---------------------------------------------------------------------------
-# STANDALONE TEST -- only runs when you execute this file directly,
-# NOT when Django (or anything else) imports it
-# ---------------------------------------------------------------------------
-if __name__ == "__main__":
-    print("--- First message ---")
-    print(run_agent("test-session-1", "Tell me about Pokhara"))
+def _extract_text(content) -> str:
+    """Gemini sometimes returns content as a plain string, and sometimes as
+    a list of content blocks (e.g. [{'type': 'text', 'text': '...', 'extras': {...}}]).
+    This normalizes either shape down to clean, displayable text only."""
+    if isinstance(content, str):
+        return content
 
-    print("\n--- Second message, same thread_id ---")
-    print(run_agent("test-session-1", "What treks are accessible from there?"))
+    if isinstance(content, list):
+        text_parts = []
+        for block in content:
+            if isinstance(block, dict) and block.get("type") == "text":
+                text_parts.append(block.get("text", ""))
+            elif isinstance(block, str):
+                text_parts.append(block)
+        return "\n".join(text_parts).strip()
+
+    return str(content)
