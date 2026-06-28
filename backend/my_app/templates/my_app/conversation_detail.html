@@ -1,4 +1,5 @@
 {% extends "my_app/base.html" %}
+{% load chat_filters %}
 {% block title %}{{ conversation.title|default:"New chat" }}{% endblock %}
 
 {% block main %}
@@ -10,7 +11,13 @@
                 {% for msg in messages %}
                     <div class="message {{ msg.role }}">
                         <div class="avatar">{% if msg.role == "user" %}U{% else %}AI{% endif %}</div>
-                        <div class="bubble">{{ msg.content }}</div>
+                        <div class="bubble">
+                              {% if msg.role == "assistant" %}
+                              {{ msg.content|render_markdown }}
+                              {% else %}
+                              {{ msg.content }}
+                              {% endif %}
+                        </div>
                     </div>
                 {% empty %}
                     <div class="empty-state">

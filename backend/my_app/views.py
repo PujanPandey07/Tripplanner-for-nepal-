@@ -88,3 +88,16 @@ def conversation_detail(request, conversation_id):
         "my_app/conversation_detail.html",
         {"conversation": conversation, "messages": messages, "form": form},
     )
+
+
+@login_required
+def delete_conversation(request, conversation_id):
+    conversation = get_object_or_404(
+        Conversation, id=conversation_id, user=request.user)
+
+    if request.method == "POST":
+        conversation.delete()
+        return redirect("conversation_list")
+
+    # GET requests just show a confirmation page rather than deleting immediately
+    return render(request, "my_app/delete_confirm.html", {"conversation": conversation})

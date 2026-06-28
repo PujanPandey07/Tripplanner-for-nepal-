@@ -45,14 +45,24 @@
         }
         .new-chat-btn:hover { background: var(--bg-bubble-user); }
         .sidebar-list { flex: 1; overflow-y: auto; padding: 0 8px; }
+        .sidebar-row {
+            display: flex; align-items: center; gap: 4px;
+            border-radius: 8px; margin-bottom: 2px;
+        }
+        .sidebar-row:hover { background: var(--bg-bubble-user); }
+        .sidebar-row:hover .delete-btn { opacity: 1; }
         .sidebar-item {
-            display: block; padding: 10px 12px; margin-bottom: 2px;
-            border-radius: 8px; color: var(--text-primary);
+            flex: 1; display: block; padding: 10px 0 10px 12px;
+            color: var(--text-primary);
             text-decoration: none; font-size: 14px;
             white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
         }
-        .sidebar-item:hover { background: var(--bg-bubble-user); }
-        .sidebar-item.active { background: var(--bg-bubble-user); }
+        .sidebar-row.active { background: var(--bg-bubble-user); }
+        .delete-btn {
+            opacity: 0; background: none; border: none; color: var(--text-muted);
+            cursor: pointer; padding: 6px 10px; font-size: 13px;
+        }
+        .delete-btn:hover { color: #ff6b6b; }
         .sidebar-footer {
             padding: 14px; border-top: 1px solid var(--border);
             font-size: 13px; color: var(--text-muted);
@@ -98,7 +108,22 @@
         }
         .message.user .avatar { background: #5b6cff; }
         .message.assistant .avatar { background: var(--accent); }
-        .message .bubble { padding-top: 4px; line-height: 1.5; white-space: pre-wrap; }
+        .message .bubble { padding-top: 4px; line-height: 1.6; }
+        .bubble p { margin: 0 0 10px; }
+        .bubble ul, .bubble ol { margin: 0 0 10px; padding-left: 22px; }
+        .bubble li { margin-bottom: 4px; }
+        .bubble strong { color: #fff; }
+        .bubble table {
+            border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 14px;
+        }
+        .bubble th, .bubble td {
+            border: 1px solid var(--border); padding: 6px 10px; text-align: left;
+        }
+        .bubble th { background: var(--bg-bubble-user); }
+        .bubble code {
+            background: var(--bg-bubble-user); padding: 2px 5px; border-radius: 4px; font-size: 13px;
+        }
+        .message.user .bubble { white-space: pre-wrap; }
         .empty-state { color: var(--text-muted); text-align: center; margin-top: 80px; }
 
         /* ---------- Input bar ---------- */
@@ -129,14 +154,20 @@
             </div>
             <nav class="sidebar-list">
                 {% for c in sidebar_conversations %}
-                    <a href="{% url 'conversation_detail' c.id %}"
-                       class="sidebar-item {% if c.id == conversation.id %}active{% endif %}">
-                        {{ c.title|default:"New conversation" }}
-                    </a>
+                    <div class="sidebar-row {% if c.id == conversation.id %}active{% endif %}">
+                        <a href="{% url 'conversation_detail' c.id %}" class="sidebar-item">
+                            {{ c.title|default:"New conversation" }}
+                        </a>
+                        <a href="{% url 'delete_conversation' c.id %}" class="delete-btn" title="Delete">&times;</a>
+                    </div>
                 {% endfor %}
             </nav>
             <div class="sidebar-footer">
-                {{ user.username }} &middot; <a href="{% url 'logout' %}">Logout</a>
+                {{ user.username }} &middot;
+                <form method="post" action="{% url 'logout' %}" style="display: inline; margin: 0;">
+                    {% csrf_token %}
+                    <button type="submit" style="background: none; border: none; color: var(--text-muted); text-decoration: underline; cursor: pointer; padding: 0; font-size: inherit; font-family: inherit;">Logout</button>
+                </form>
             </div>
         </aside>
         <main class="main-pane">
